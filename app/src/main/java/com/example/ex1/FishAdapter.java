@@ -14,14 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fishViewHolder> {
 
@@ -42,59 +41,50 @@ public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fish
         holder.age.setText(model.getAge());
         holder.weight.setText(model.getWeight());
 
-        holder.btnedit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext())
-                        .setContentHolder(new ViewHolder(R.layout.fish_edit))
-                        .setExpanded(true, 900)
-                        .create();
+        holder.btnedit.setOnClickListener(v -> {
+            final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext())
+                    .setContentHolder(new ViewHolder(R.layout.fish_edit))
+                    .setExpanded(true, 900)
+                    .create();
 
-                View view = dialogPlus.getHolderView();
+            View view = dialogPlus.getHolderView();
 
-                EditText name = view.findViewById(R.id.txt_name);
-                EditText breed = view.findViewById(R.id.txt_breed);
-                EditText age = view.findViewById(R.id.txt_age);
-                EditText weight = view.findViewById(R.id.txt_weight);
+            EditText name = view.findViewById(R.id.txt_name);
+            EditText breed = view.findViewById(R.id.txt_breed);
+            EditText age = view.findViewById(R.id.txt_age);
+            EditText weight = view.findViewById(R.id.txt_weight);
 
-                Button btnupdate = view.findViewById(R.id.btn_update);
+            Button btnupdate = view.findViewById(R.id.btn_update);
 
-                name.setText(model.getName());
-                breed.setText(model.getBreed());
-                age.setText(model.getAge());
-                weight.setText(model.getWeight());
+            name.setText(model.getName());
+            breed.setText(model.getBreed());
+            age.setText(model.getAge());
+            weight.setText(model.getWeight());
 
-                dialogPlus.show();
+            dialogPlus.show();
 
-                btnupdate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Map<String, Object> map = new HashMap<>();
-                        map.put("name", name.getText().toString());
-                        map.put("breed", breed.getText().toString());
-                        map.put("age", age.getText().toString());
-                        map.put("weight", weight.getText().toString());
+            btnupdate.setOnClickListener(v1 -> {
+                Map<String, Object> map = new HashMap<>();
+                map.put("name", name.getText().toString());
+                map.put("breed", breed.getText().toString());
+                map.put("age", age.getText().toString());
+                map.put("weight", weight.getText().toString());
 
-                        FirebaseDatabase.getInstance().getReference().child("fishes")
-                                .child(getRef(position).getKey()).updateChildren(map)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(holder.name.getContext(), "Updated", Toast.LENGTH_SHORT).show();
-                                        dialogPlus.dismiss();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(holder.name.getContext(), "Update Failed", Toast.LENGTH_SHORT).show();
-                                        dialogPlus.dismiss();
-                                    }
-                                });
-                    }
-                });
-            }
+                FirebaseDatabase.getInstance().getReference().child("fishes")
+                        .child(Objects.requireNonNull(getRef(position).getKey())).updateChildren(map)
+                        .addOnSuccessListener(unused -> {
+                            Toast.makeText(holder.name.getContext(), "Updated", Toast.LENGTH_SHORT).show();
+                            dialogPlus.dismiss();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(holder.name.getContext(), "Update Failed", Toast.LENGTH_SHORT).show();
+                            dialogPlus.dismiss();
+                        });
+            });
         });
+
+        holder.btndelete.setOnClickListener(v -> FirebaseDatabase.getInstance().getReference().child("fishes")
+                .child(Objects.requireNonNull(getRef(position).getKey())).removeValue());
 
     }
 
@@ -105,7 +95,7 @@ public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fish
         return new fishViewHolder(view);
     }
 
-    class fishViewHolder extends RecyclerView.ViewHolder {
+    static class fishViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, breed, age, weight;
         Button btnedit, btndelete;
