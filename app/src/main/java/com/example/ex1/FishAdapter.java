@@ -3,6 +3,7 @@ package com.example.ex1;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 
 public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fishViewHolder> {
 
@@ -30,6 +33,17 @@ public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fish
         holder.age.setText(model.getAge());
         holder.weight.setText(model.getWeight());
 
+        holder.btnedit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext())
+                        .setContentHolder(new ViewHolder(R.layout.fish_edit))
+                        .setExpanded(true, 900)
+                        .create();
+
+                dialogPlus.show();
+            }
+        });
 
     }
 
@@ -43,6 +57,7 @@ public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fish
     class fishViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, breed, age, weight;
+        Button btnedit, btndelete;
 
         public fishViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,6 +67,9 @@ public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fish
             age = (TextView) itemView.findViewById(R.id.txt_age);
             weight = (TextView) itemView.findViewById(R.id.txt_weight);
 
+
+            btnedit = (Button) itemView.findViewById(R.id.btn_edit);
+            btndelete = (Button) itemView.findViewById(R.id.btn_delete);
         }
     }
 }
