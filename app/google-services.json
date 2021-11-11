@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "18857150518",
+    "firebase_url": "https://crudex2-60c3f-default-rtdb.firebaseio.com",
+    "project_id": "crudex2-60c3f",
+    "storage_bucket": "crudex2-60c3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18857150518:android:99c837cbdb0f3945f13097",
+        "android_client_info": {
+          "package_name": "com.example.ex1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18857150518-tdvg0trmaogvqlju5h9sbeofchurj0im.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAph4PPUn6XTkL_k1_vV43cu4wSlMBwWhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18857150518-tdvg0trmaogvqlju5h9sbeofchurj0im.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
