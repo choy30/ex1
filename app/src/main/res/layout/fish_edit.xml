@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,44 +9,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:gravity="center"/>
+        android:gravity="center"
+        tools:ignore="HardcodedText" />
+
     <EditText
         android:id="@+id/txt_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Breed"
-        android:gravity="center"/>
+        android:gravity="center"
+        tools:ignore="HardcodedText" />
+
     <EditText
         android:id="@+id/txt_breed"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Age"
-        android:gravity="center"/>
+        android:gravity="center"
+        tools:ignore="HardcodedText" />
+
     <EditText
         android:id="@+id/txt_age"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Weight"
-        android:gravity="center"/>
+        android:gravity="center"
+        tools:ignore="HardcodedText" />
+
     <EditText
         android:id="@+id/txt_weight"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update"/>
+        android:text="Update"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

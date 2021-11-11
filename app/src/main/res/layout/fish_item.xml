@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="6dp">
@@ -15,21 +16,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="name"/>
+            android:text="name"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/txt_breed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_name"
-            android:text="breed"/>
+            android:text="breed"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/txt_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_breed"
-            android:text="age"/>
+            android:text="age"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/txt_weight"
@@ -37,7 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_age"
             android:paddingBottom="10dp"
-            android:text="weight"/>
+            android:text="weight"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:text="Edit"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded,SpUsage" />
 
             <Button
                 android:id="@+id/btn_delete"
@@ -59,7 +65,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Delete"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded,SpUsage" />
 
         </LinearLayout>
 
