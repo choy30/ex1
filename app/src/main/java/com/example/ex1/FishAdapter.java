@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,23 @@ public class FishAdapter extends FirebaseRecyclerAdapter <Fish, FishAdapter.fish
                         .setExpanded(true, 900)
                         .create();
 
+                View view = dialogPlus.getHolderView();
+
+                EditText name = view.findViewById(R.id.txt_name);
+                EditText breed = view.findViewById(R.id.txt_breed);
+                EditText age = view.findViewById(R.id.txt_age);
+                EditText weight = view.findViewById(R.id.txt_weight);
+
+                Button btnupdate = view.findViewById(R.id.btn_update);
+
+                name.setText(model.getName());
+                breed.setText(model.getBreed());
+                age.setText(model.getAge());
+                weight.setText(model.getWeight());
+
                 dialogPlus.show();
+
+
             }
         });
 
